@@ -1,6 +1,9 @@
-const express = require('express');
-const path    = require('path');
-const hbs     = require('express-handlebars');
+const express    = require('express');
+const path       = require('path');
+const hbs        = require('express-handlebars');
+const bodyParser = require('body-parser');
+
+const blogRoutes = require('./routes/blog');
 
 const app = express();
 
@@ -13,9 +16,10 @@ app.engine('hbs', hbs({
 }));
 app.set('view engine', 'hbs');
 
-app.get('/', (req, res) => {
-  res.render('home');
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(blogRoutes);
 
 app.listen(3000, err => {
   if (err) return console.log(err);
