@@ -1,9 +1,20 @@
 const express = require('express');
+const path = require('path');
+const hbs = require('express-handlebars');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
+app.engine('hbs', hbs({
+  defaultLayout: 'main',
+  extname: 'hbs'
+}));
+app.set('view engine', 'hbs');
+
 app.get('/', (req, res) => {
-  res.status(200).send('<h1>Hello, World!</h1>');
+  res.render('home');
 });
 
 app.listen(3000, err => {
