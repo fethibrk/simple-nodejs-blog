@@ -1,0 +1,26 @@
+{
+  "name": "simple-blog",
+  "version": "1.0.0",
+  "description": "A simple blog built with NodeJS.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programer-tv/simple-nodejs-blog.git"
+  },
+  "keywords": [
+    "nodejs",
+    "blog"
+  ],
+  "author": "moeabdol",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/programer-tv/simple-nodejs-blog/issues"
+  },
+  "homepage": "https://github.com/programer-tv/simple-nodejs-blog#readme",
+  "devDependencies": {
+    "eslint": "^4.14.0"
+  }
+}
