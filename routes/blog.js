@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/posts/new', posts.newBlogPost);
-
 router.post('/posts', posts.createBlogPost);
+router.get('/posts/:id', posts.showBlogPost);
 
 module.exports = router;

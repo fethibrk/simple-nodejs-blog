@@ -14,7 +14,14 @@ const createBlogPost = (req, res, next) => {
     .catch(err => next(err));
 };
 
+const showBlogPost = (req, res, next) => {
+  Post.findById(req.params.id)
+    .then(post => res.render('show_post', { post }))
+    .catch(err => next(err));
+};
+
 module.exports = {
   newBlogPost,
-  createBlogPost
+  createBlogPost,
+  showBlogPost
 };
