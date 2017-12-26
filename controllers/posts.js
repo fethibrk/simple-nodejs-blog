@@ -42,11 +42,18 @@ const updateBlogPost = (req, res, next) => {
     .catch(err => next(err));
 };
 
+const deleteBlogPost = (req, res, next) => {
+  Post.findByIdAndRemove(req.params.id)
+    .then(() => res.redirect('/'))
+    .catch(err => next(err));
+};
+
 module.exports = {
   index,
   newBlogPost,
   createBlogPost,
   showBlogPost,
   editBlogPost,
-  updateBlogPost
+  updateBlogPost,
+  deleteBlogPost
 };
