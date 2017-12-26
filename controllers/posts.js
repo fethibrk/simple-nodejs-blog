@@ -1,5 +1,11 @@
 const Post = require('../models/post');
 
+const index = (req, res, next) => {
+  Post.find()
+    .then(posts => res.render('home', { posts }))
+    .catch(err => next(err));
+};
+
 const newBlogPost = (req, res) => {
   res.render('new_post');
 };
@@ -21,6 +27,7 @@ const showBlogPost = (req, res, next) => {
 };
 
 module.exports = {
+  index,
   newBlogPost,
   createBlogPost,
   showBlogPost
