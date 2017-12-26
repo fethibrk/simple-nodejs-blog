@@ -2,11 +2,14 @@ const express    = require('express');
 const path       = require('path');
 const hbs        = require('express-handlebars');
 const bodyParser = require('body-parser');
+const morgan     = require('morgan');
 
 const blogRoutes = require('./routes/blog');
 const hbsHelpers = require('./helpers/hbs');
 
 const app = express();
+
+app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
