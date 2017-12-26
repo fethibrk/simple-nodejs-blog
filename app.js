@@ -4,6 +4,7 @@ const hbs        = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 const blogRoutes = require('./routes/blog');
+const hbsHelpers = require('./helpers/hbs');
 
 const app = express();
 
@@ -12,7 +13,10 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.engine('hbs', hbs({
   defaultLayout: 'main',
-  extname: 'hbs'
+  extname: 'hbs',
+  helpers: {
+    truncate: hbsHelpers.truncate
+  }
 }));
 app.set('view engine', 'hbs');
 
