@@ -10,7 +10,7 @@ const createBlogPost = (req, res, next) => {
     imageUrl: req.body.imageUrl,
     content: req.body.content
   })
-    .then(post => res.status(201).json(post))
+    .then(post => res.redirect(`/posts/${post._id}`))
     .catch(err => next(err));
 };
 
