@@ -26,9 +26,27 @@ const showBlogPost = (req, res, next) => {
     .catch(err => next(err));
 };
 
+const editBlogPost = (req, res, next) => {
+  Post.findById(req.params.id)
+    .then(post => res.render('edit_post', { post }))
+    .catch(err => next(err));
+};
+
+const updateBlogPost = (req, res, next) => {
+  Post.findByIdAndUpdate(req.params.id, { $set: {
+    title: req.body.title,
+    imageUrl: req.body.imageUrl,
+    content: req.body.content
+  }})
+    .then(post => res.redirect(`/posts/${post._id}`))
+    .catch(err => next(err));
+};
+
 module.exports = {
   index,
   newBlogPost,
   createBlogPost,
-  showBlogPost
+  showBlogPost,
+  editBlogPost,
+  updateBlogPost
 };
